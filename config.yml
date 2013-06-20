@@ -1,0 +1,4 @@
+HubServer: hub
+prefix: '&4[&aHubKick&4]'
+KickallMessage: '&a&lYou have been kicked to the hub!'
+HubOnKick: true

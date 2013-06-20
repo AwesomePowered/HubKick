@@ -1,0 +1,30 @@
+main: net.lazlecraft.hubkick.HubKick
+author: LaxWasHere
+version: 1.5.5
+name: HubKick
+commands:
+    hub:
+        description: Sends you to the hub server!
+        aliases: lobby
+        permission: hubkick.command
+        permission-message: You shall not pass!
+    alltolobby:
+        description: Sends everyone to the hub server!
+        aliases: [lobbyall, allto]
+        permission: hubkick.kickall
+        permission-message: You may not!
+    shutdown:
+        description: Sends everyone to the hub server and shutdown the server.
+        aliases: stop
+        permission: hubkick.shutdown
+        permission-message: You shall not pass!
+    shutdown:
+        description: Sends everyone to the hub server and shutdown the server.
+        aliases: stop
+        permission: hubkick.shutdown
+        permission-message: You shall not pass!
+    forcekick:
+        description: Crashes the players client
+        aliases: fkick
+        permission: hubkick.forcekick
+        permission-message: You may not kick!
