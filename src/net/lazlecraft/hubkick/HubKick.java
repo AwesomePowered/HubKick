@@ -60,6 +60,14 @@ public class HubKick extends JavaPlugin implements Listener {
 		    return false;
 		  }
 	  
+	  //Send the player to the specified server. Expected [Player] and [Server]
+	  public void sendTo(Player p, String server) {
+	   	   ByteArrayDataOutput out = ByteStreams.newDataOutput();
+		      out.writeUTF("Connect");
+		      out.writeUTF(server);
+		    p.sendPluginMessage(this, "BungeeCord", out.toByteArray());
+	  }
+	  
 	  //Sends the player to the hub.
 	  public void sendPlayer(Player p) {
    	   ByteArrayDataOutput out = ByteStreams.newDataOutput();
@@ -68,7 +76,7 @@ public class HubKick extends JavaPlugin implements Listener {
 		    p.sendPluginMessage(this, "BungeeCord", out.toByteArray());
    }
 	  	  
-	  //This will send all servers to the hub with the message configured in the config.
+	  //This will send all playerss to the hub with the message configured in the config.
 	  public void kickAll() {
 	       for (Player p : Bukkit.getServer().getOnlinePlayers()) {
 	    	   p.sendMessage(ChatColor.translateAlternateColorCodes('&', kickallMessage));
@@ -79,7 +87,7 @@ public class HubKick extends JavaPlugin implements Listener {
 	       }
 	  }
 	  
-	  //This will kick all the players to the hub and shutsdown the server.
+	  //This will kick all the players to the hub and shut the server down;
 	  //#BlameRoblabla2013
 	  public void kickShutdown() {
 			  kickAll();
