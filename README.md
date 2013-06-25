@@ -27,19 +27,19 @@ HubKick hubkick = (HubKick) Bukkit.getPluginManager().getPlugin("HubKick");
 Sends the specified player to the specified server.
 ```java
 hubkick.sendTo(player, server);
-```java 
+```
 
 Sends the player to the lobby server.
 ```java
 hubkick.sendPlayer(player);
-```java 
+```
 
 Kick all players to the lobby server.
 ```java
 hubkick.KickShutdown();
-```java 
+```
 
 Kick all players to the lobby server and shutdown the server.
 ```java
 hubkick.KickShutdown();
-```java 
+```
