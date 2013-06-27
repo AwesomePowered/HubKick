@@ -18,11 +18,6 @@ commands:
         aliases: stop
         permission: hubkick.shutdown
         permission-message: You shall not pass!
-    shutdown:
-        description: Sends everyone to the hub server and shutdown the server.
-        aliases: stop
-        permission: hubkick.shutdown
-        permission-message: You shall not pass!
     forcekick:
         description: Crashes the players client
         aliases: fkick
