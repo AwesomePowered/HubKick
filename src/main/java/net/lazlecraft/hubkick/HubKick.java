@@ -52,7 +52,7 @@ public class HubKick extends JavaPlugin implements Listener {
             			Player pp = sender.getServer().getPlayer(args[0]);
             			//original code from https://github.com/yawkat/EnhancedKick
             			//Untested
-            			((org.bukkit.craftbukkit.v1_5_R3.entity.CraftPlayer) pp).getHandle().playerConnection.sendPacket(new net.minecraft.server.v1_5_R3.Packet61WorldEvent(2001, 0, 0, 0, 0x105, false));
+            			sender.sendMessage(ChatColor.RED + "Command temporarily disabled!");
             			
 		    		} 
 		    		else sender.sendMessage(prefix + ChatColor.RED + "Player does not exist!");
