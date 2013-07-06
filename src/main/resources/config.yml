@@ -1,4 +1,5 @@
 HubServer: hub
 prefix: '&4[&aHubKick&4]'
 KickallMessage: '&a&lYou have been kicked to the hub!'
+toLobbyMsg: '&aYou traveled through time and space to the hub server!'
 HubOnKick: true

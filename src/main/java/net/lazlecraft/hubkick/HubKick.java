@@ -36,6 +36,7 @@ public class HubKick extends JavaPlugin implements Listener {
 	  public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		    if (((commandLabel.equalsIgnoreCase("hub")) || (commandLabel.equalsIgnoreCase("lobby"))) && (sender.hasPermission("hubkick.command"))) {
 			    Player p = (Player)sender;
+			    p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("toLobbyMsg")));
 		    	sendPlayer(p);
 		    }
 		    else if (commandLabel.equalsIgnoreCase("alltolobby") || (commandLabel.equalsIgnoreCase("lobbyall")) || (commandLabel.equalsIgnoreCase("allto")) && (sender.hasPermission("hubkick.kickall"))) {
@@ -50,8 +51,6 @@ public class HubKick extends JavaPlugin implements Listener {
 		    	} else if (args.length == 1) {
 		    		if (sender.getServer().getPlayer(args[0]) != null) {
             			Player pp = sender.getServer().getPlayer(args[0]);
-            			//original code from https://github.com/yawkat/EnhancedKick
-            			//Untested
             			sender.sendMessage(ChatColor.RED + "Command temporarily disabled!");
             			
 		    		} 
