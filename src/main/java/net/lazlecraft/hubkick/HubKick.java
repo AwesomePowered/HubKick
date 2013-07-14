@@ -36,8 +36,29 @@ public class HubKick extends JavaPlugin implements Listener {
 	  public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
 		    if (((commandLabel.equalsIgnoreCase("hub")) || (commandLabel.equalsIgnoreCase("lobby"))) && (sender.hasPermission("hubkick.command"))) {
 			    Player p = (Player)sender;
-			    p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("toLobbyMsg")));
+			    if (args.length == 0) {
 		    	sendPlayer(p);
+			    } else if (args.length == 1 && sender.hasPermission("hubkick.others")) {
+			    	if (sender.getServer().getPlayer(args[0]) != null) {
+			    		sendPlayer(p);
+			    	}
+			    	else sender.sendMessage(prefix + ChatColor.RED + "Player does not exist!");
+			    }
+		    }
+		    else if (commandLabel.equalsIgnoreCase("sendplayer") || (commandLabel.equalsIgnoreCase("sendp") && (sender.hasPermission("hubkick.send")))) {
+		    	if (args.length == 0) {
+		    		sender.sendMessage(prefix + ChatColor.RED + "/sendplayer <player> <server>");
+		    	} else if (args.length == 1) {
+		    		sender.sendMessage(prefix + ChatColor.RED + "Not enough arguments!");
+		    	} else if (args.length == 2) {
+		    		if (sender.getServer().getPlayer(args[0]) != null) {
+		    			Player p = sender.getServer().getPlayer(args[0]);
+		    			String server = args[1];
+		    			p.sendMessage(prefix + ChatColor.GREEN + "You were sent to " + server + " by " + sender);
+		    			sendTo(p, server);
+		    		}
+		    		else sender.sendMessage(prefix + ChatColor.RED + "The player you're trying to send is offline!");
+		    	}
 		    }
 		    else if (commandLabel.equalsIgnoreCase("alltolobby") || (commandLabel.equalsIgnoreCase("lobbyall")) || (commandLabel.equalsIgnoreCase("allto")) && (sender.hasPermission("hubkick.kickall"))) {
 		    	kickAll();
@@ -50,9 +71,9 @@ public class HubKick extends JavaPlugin implements Listener {
 		    		sender.sendMessage(prefix + ChatColor.RED + "/fkick <player>");
 		    	} else if (args.length == 1) {
 		    		if (sender.getServer().getPlayer(args[0]) != null) {
-            			Player pp = sender.getServer().getPlayer(args[0]);
+            			@SuppressWarnings("unused") //Because yellow lines are ugly.
+						Player p = sender.getServer().getPlayer(args[0]);
             			sender.sendMessage(ChatColor.RED + "Command temporarily disabled!");
-            			
 		    		} 
 		    		else sender.sendMessage(prefix + ChatColor.RED + "Player does not exist!");
 		    	}
@@ -70,7 +91,8 @@ public class HubKick extends JavaPlugin implements Listener {
 	  
 	  //Sends the player to the hub.
 	  public void sendPlayer(Player p) {
-   	   ByteArrayDataOutput out = ByteStreams.newDataOutput();
+		    p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("toLobbyMsg")));
+		    ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		      out.writeUTF("Connect");
 		      out.writeUTF(getConfig().getString("HubServer"));
 		    p.sendPluginMessage(this, "BungeeCord", out.toByteArray());
