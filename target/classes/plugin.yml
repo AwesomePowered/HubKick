@@ -23,3 +23,8 @@ commands:
         aliases: fkick
         permission: hubkick.forcekick
         permission-message: You may not kick!
+    sendplayer:
+        description: Send the player to another server.
+        aliases: sendp
+        permission: hubkick.send
+        permission-message: You may not send!
