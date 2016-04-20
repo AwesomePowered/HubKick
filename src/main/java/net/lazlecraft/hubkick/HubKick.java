@@ -54,7 +54,7 @@ public class HubKick extends JavaPlugin implements Listener {
 		    		if (sender.getServer().getPlayer(args[0]) != null) {
 		    			Player p = sender.getServer().getPlayer(args[0]);
 		    			String server = args[1];
-		    			p.sendMessage(prefix + ChatColor.GREEN + "You were sent to " + server + " by " + sender);
+		    			p.sendMessage(prefix + ChatColor.GREEN + "You were sent to " + server);
 		    			sendTo(p, server);
 		    		}
 		    		else sender.sendMessage(prefix + ChatColor.RED + "The player you're trying to send is offline!");
