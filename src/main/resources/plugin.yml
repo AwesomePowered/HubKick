@@ -1,6 +1,6 @@
 main: net.lazlecraft.hubkick.HubKick
 author: LaxWasHere
-version: ${project.version}
+version: 1.6
 name: HubKick
 commands:
     hub:

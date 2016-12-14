@@ -14,6 +14,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class HubKick extends JavaPlugin implements Listener {
 	
@@ -93,7 +94,7 @@ public class HubKick extends JavaPlugin implements Listener {
 		    p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("toLobbyMsg")));
 		    ByteArrayDataOutput out = ByteStreams.newDataOutput();
 		      out.writeUTF("Connect");
-		      out.writeUTF(getConfig().getString("HubServer"));
+		      out.writeUTF(getHubServer());
 		    p.sendPluginMessage(this, "BungeeCord", out.toByteArray());
    }
 	  	  
@@ -103,7 +104,7 @@ public class HubKick extends JavaPlugin implements Listener {
 	    	   p.sendMessage(ChatColor.translateAlternateColorCodes('&', kickallMessage));
 	    	   ByteArrayDataOutput out = ByteStreams.newDataOutput();
 			      out.writeUTF("Connect");
-			      out.writeUTF(getConfig().getString("HubServer"));
+			      out.writeUTF(getHubServer());
 			    p.sendPluginMessage(this, "BungeeCord", out.toByteArray());
 	       }
 	  }
@@ -128,5 +129,14 @@ public class HubKick extends JavaPlugin implements Listener {
 				  ev.setCancelled(true);
 				  sendPlayer(p);
 		} 
+	}
+
+	public String getHubServer() {
+		if (getConfig().getBoolean("randomHubs")) {
+			Random r = new Random();
+			return getConfig().getStringList("Hubs").get(r.nextInt(getConfig().getStringList("Hubs").size()));
+		} else {
+			return getConfig().getString("HubServer");
+		}
 	}
 }

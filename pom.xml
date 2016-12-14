@@ -3,7 +3,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.lazlecraft</groupId>
     <artifactId>HubKick</artifactId>
-    <version>1.5.7</version>
+    <version>1.6</version>
     <name>HubKick</name>
     <build>
         <defaultGoal>clean package</defaultGoal>
@@ -40,7 +40,7 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xs
         <dependency>
             <groupId>org.spigotmc</groupId>
             <artifactId>spigot-api</artifactId>
-            <version>1.9-R0.1-SNAPSHOT</version>
+            <version>1.11-R0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 </project>
