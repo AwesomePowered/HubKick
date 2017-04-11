@@ -121,7 +121,7 @@ public class HubKick extends JavaPlugin implements Listener {
     @EventHandler
     public void onKick(PlayerKickEvent ev) {
         Matcher m = Pattern.compile(getPattern()).matcher(ev.getReason());
-        if (m.matches()) {
+        if (m.find()) {
             return;
         }
         if (getConfig().getBoolean("HubOnKick")) {
