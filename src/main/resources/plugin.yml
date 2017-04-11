@@ -1,6 +1,6 @@
 main: net.lazlecraft.hubkick.HubKick
 author: LaxWasHere
-version: 1.6
+version: 1.7
 name: HubKick
 commands:
     hub:
@@ -19,7 +19,7 @@ commands:
         permission: hubkick.shutdown
         permission-message: You shall not pass!
     forcekick:
-        description: Crashes the players client
+        description: Kicked the player out of the server
         aliases: fkick
         permission: hubkick.forcekick
         permission-message: You may not kick!
